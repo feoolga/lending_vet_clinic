@@ -13,6 +13,17 @@
 	--index: calc(1vw + 1vh)
 }
 
+/* Обнуление /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+ul{
+	list-style: none;
+}
+
 /* Общие /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
 body{
@@ -64,6 +75,7 @@ a{
 }
 
 .header__nav{
+	padding: 20px 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -94,6 +106,7 @@ a{
 	padding: 10px;
 	border-radius: 23px;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .call span{
@@ -116,14 +129,20 @@ a{
 
 .main-title__left{
 	position: relative;
+	top: 0;
+	left: -20px;
 	font-size: 180px;
 	z-index: 0;
+	/* transform: translate(-10%, 0); */
 }
 
 .main-title__right{
 	position: relative;
+	top: 0;
+	left: 20px;
 	font-size: 130px;
 	z-index: 2;
+	text-shadow: rgba(254, 245, 231, .7) 0 0 10px;
 }
 
 .header__layers img{
