@@ -10,7 +10,10 @@
   }
 
 :root{
-	--index: calc(1vw + 1vh)
+	--index: calc(1vw + 1vh);
+	--colorbrown: #441600;
+	--colorlight1: #f7f4e8;
+	--colorlight2: #f7c478;
 }
 
 /* Обнуление /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
@@ -32,7 +35,7 @@ body{
 }
 
 h2{
-	font-size: 25px;
+	font-size: 30px;
 	padding: 10px 0;
 	text-align: center;
 }
@@ -41,6 +44,7 @@ h3{
 	font-size: 20px;
 	padding: 5px 0;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 a{
@@ -48,16 +52,46 @@ a{
 	color: inherit;
 }
 
-/* Хедер /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+.hide{
+	display: none;
+}
 
 .container{
 	max-width: calc(var(--index) * 45);
 	margin: 0 auto;
 }
 
+/* Лоадер /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
+.loader{
+	background-image: radial-gradient(var(--colorlight2), var(--colorlight1));
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader__icon{
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+}
+
+#dog{
+	opacity: 1;
+	fill: var(--colorbrown);
+}
+
+/* Хедер /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
 .header{
 	height: 100vh;
-	background-image: linear-gradient(rgb(247, 196, 120), #fff);
+	background-image: linear-gradient(var(--colorlight2), var(--colorlight1));
 }
 
 /* .hero{
@@ -101,7 +135,7 @@ a{
 }
 
 .call{
-	background-color: #441600;
+	background-color: var(--colorbrown);
 	color: #fff;
 	padding: 10px;
 	border-radius: 23px;
@@ -157,7 +191,7 @@ a{
 /* Главный блок /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
 .main{
-	background-color: #fff;
+	background-color: var(--colorlight1);
 	padding: calc(var(--index) * 1.5) 0;
 	/* border: 1px solid red; */
 }
@@ -168,16 +202,18 @@ a{
 	gap: 20px;
 }
 
+.main__title{
+	margin: 0 0 20px 0;
+}
+
 .main__item{
 	background-color: bisque;
-	padding: 5px;
+	/* padding: 5px; */
 	border-radius: calc(var(--index) * .5);
 }
 
-.main__item-body{
-	border: 1px solid #faf5ec;
-	border-radius: inherit;
-	padding: 5px;
+.main__item-title{
+	padding: 7px 0;
 }
 
 .main__item-image{
@@ -195,33 +231,62 @@ a{
 
 .main__item-text{
 	text-align: center;
-	padding: 5px;
+	padding: 10px 5px;
 }
 
 /* Статьи /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
 .articles{
-	background-image: linear-gradient( #fff, rgb(247, 196, 120));
+	background-image: linear-gradient( var(--colorlight1), var(--colorlight2));
 }
 
-.articles__content{
-
-}
-
-.articlles__item{
+.spoiler{
 	margin-bottom: 20px;
 	background-color: #fff;
-	padding: 20px;
 	border-radius: calc(var(--index) * .5);
 }
 
-.articlles__item-title{
+.spoiler__title{
 	text-align: left;
+	font-size: 20px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 20px 60px;
+	position: relative;
+	/* margin-bottom: 10px; */
 }
 
-.articlles__item-text{
+.spoiler__title::before{
+	content: '';
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background-image: url(../img/arrow_down.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.spoiler__text{
 	text-align: justify;
-	border-top: 1px solid rgb(247, 196, 120);
-	padding-top: 20px;
-	display: none;
+	border-top: 1px solid var(--colorlight1);
+	padding: 10px 20px;
+	/* opacity: 0; */
+	/* visibility: hidden; */
+	/* transform: translate(0,-50px); */
+	transition: all .3 linear;
+	position: relative;
+	/* display: none; */
+}
+
+.articlles__item-text.open{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	opacity: 1;
+	/* visibility: visible; */
+	transform: translate(0,0);
+	/* display: block; */
+	/* position: relative; */
 }
