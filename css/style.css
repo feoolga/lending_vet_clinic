@@ -294,3 +294,17 @@ a{
 .spoiler__text.open{
 	border-top: 1px solid var(--colorlight1);
 }
+
+/* Слайдер - щенки  /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
+.swiper {
+	width: 600px;
+	height: 300px;
+  }
+
+
+  /* footer  /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
+  footer{
+	text-align: center;
+  }
