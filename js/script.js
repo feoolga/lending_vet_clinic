@@ -1,19 +1,34 @@
 const loader = document.querySelector('#loader')
+let paddingSpoiler = 10
 
 window.onload = function(){
 	loader.remove()
 }
 
-
-const spoilers = document.querySelectorAll(".spoiler")
-
-spoilers.forEach(function(elem){
+document.querySelectorAll(".spoiler__title").forEach((elem) => {
 	// console.log(elem);
-	elem.addEventListener('click', () => {
+	elem.addEventListener('click', function(){
 		// console.log(this);
-		// spoilers.forEach(function(elem){
-		// 	elem.nextElementSibling.classList.remove('open')
-		// })
-		elem.nextElementSibling.classList.toggle('open')
+		let text = this.nextElementSibling
+
+		if(text.style.maxHeight){
+			document.querySelectorAll(".spoiler__text").forEach((elem) => {
+				elem.style.paddingTop = '0'
+				elem.style.paddingBottom = '0'
+				elem.style.maxHeight = null
+				elem.classList.remove('open')
+			})
+		} else{
+			document.querySelectorAll(".spoiler__text").forEach((elem) => {
+				elem.style.paddingTop = '0'
+				elem.style.paddingBottom = '0'
+				elem.style.maxHeight = null
+				elem.classList.remove('open')
+			})
+			text.style.paddingTop = paddingSpoiler + "px"
+			text.style.paddingBottom = paddingSpoiler + "px"
+			text.style.maxHeight = text.scrollHeight + (paddingSpoiler*2) + "px"  //Переменная?
+			elem.nextElementSibling.classList.add('open')
+		}
 	})
 })
