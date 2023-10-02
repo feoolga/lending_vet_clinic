@@ -30,6 +30,10 @@ ul{
 
 /* Общие /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
+body,html{
+	height: 100%;
+}
+
 body{
 	font-family: 'inter-f';
 	color: #000;
@@ -175,15 +179,27 @@ a{
 }
 
 .main-title__left{
+	display: inline-block;
 	position: relative;
 	top: 0;
 	left: -20px;
 	font-size: 180px;
 	z-index: 0;
-	/* transform: translate(-10%, 0); */
+}
+
+.main-title__left.anim{
+	transform: translate(-100px, 0);
+	transition: all .5s ease-out;
+	opacity: 0;
+}
+
+.main-title__left.anim.active{
+	transform: translate(0, 0);
+	opacity: 1;
 }
 
 .main-title__right{
+	display: inline-block;
 	position: relative;
 	top: 0;
 	left: 20px;
@@ -191,6 +207,18 @@ a{
 	z-index: 2;
 	text-shadow: rgba(254, 245, 231, .7) 0 0 10px;
 }
+
+.main-title__right.anim{
+	transform: translate(100px, 0);
+	transition: all .5s ease-out;
+	opacity: 0;
+}
+
+.main-title__right.anim.active{
+	transform: translate(0, 0);
+	opacity: 1;
+}
+
 
 .header__layers img{
 	position: absolute;
@@ -219,10 +247,31 @@ a{
 	margin: 0 0 20px 0;
 }
 
+.main__title.anim{
+	transform: translate(0, 100px);
+	transition: all .5s ease-out;
+	opacity: 0;
+}
+
+.main__title.anim.active{
+	transform: translate(0, 0);
+	opacity: 1;
+}
+
 .main__item{
 	background-color: bisque;
-	/* padding: 5px; */
 	border-radius: calc(var(--index) * .5);
+}
+
+.main__item.anim{
+	transform: translate(0, 100px);
+	transition: all .8s ease-out;
+	opacity: .5;
+}
+
+.main__item.anim.active{
+	transform: translate(0, 0);
+	opacity: 1;
 }
 
 .main__item-title{
@@ -251,12 +300,17 @@ a{
 
 .articles{
 	background-image: linear-gradient( var(--colorlight1), var(--colorlight2));
+	padding-bottom: 20px;
 }
 
 .spoiler{
 	margin-bottom: 20px;
 	background-color: #fff;
 	border-radius: calc(var(--index) * .5);
+}
+
+.spoiler:last-child{
+	margin-bottom: 0;
 }
 
 .spoiler__title{
@@ -270,6 +324,7 @@ a{
 }
 
 .spoiler__title::before{
+	display: inline-block;
 	content: '';
 	width: 20px;
 	height: 20px;
@@ -279,6 +334,12 @@ a{
 	background-image: url(../img/arrow_down.svg);
 	background-size: cover;
 	background-repeat: no-repeat;
+	transform: rotateX(0);
+	transition: transform .3s linear;
+}
+
+.spoiler__title.open::before{
+	transform: rotateX(180deg);
 }
 
 .spoiler__text{
@@ -297,14 +358,71 @@ a{
 
 /* Слайдер - щенки  /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
-.swiper {
+.puppies{
+	background-image: linear-gradient(var(--colorlight2), var(--colorlight1));
+}
+
+/* .swiper {
 	width: 600px;
 	height: 300px;
-  }
+  } */
 
+.slide__image{
+	height: 800px;
+	width: 800px;
+	margin: 0 auto;
+}
+
+.slide__image img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+  
 
   /* footer  /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
 
   footer{
 	text-align: center;
+	background-color: var(--colorlight1);
+	padding: 20px;
   }
+
+ /* стрелочка вверх  /---/---/---/---/---/---/---/---/---/---/---/---/---/---/--- */
+
+  .btn-up{
+	width: 65px;
+	height: 65px;
+	position: fixed;
+	right: calc(var(--index)*1.5);
+	bottom: calc(var(--index)*1.5);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.btn-up_hide{
+	display: none;
+}
+
+.arrow1{
+	transform: translate(0,25%);
+	fill:none;
+	stroke:#617459;
+	stroke-width:3;
+	stroke-linecap:round;
+	opacity:0.5;
+}
+
+.arrow2{
+	transform: translate(0,-25%);
+	fill:none;
+	stroke:#617459;
+	stroke-width:3;
+	stroke-linecap:round;
+	opacity:0.5;
+}
+
