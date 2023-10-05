@@ -13,8 +13,6 @@ window.onload = function(){
 		threshold: 0.5,
 	};
 
-	console.log(555);
-
 	const observer = new IntersectionObserver((entries, observer) => {
 		// для каждой записи-целевого элемента
 		entries.forEach(entry => {
@@ -35,6 +33,12 @@ window.onload = function(){
 	animations.forEach(animation => {
 		observer.observe(animation)
 	})
+}
+
+/* скролл к нужным блокам  /---/---/---/---/---/---/---/---/---/--- */
+
+function scrollToBlock(element, option="center"){
+	document.querySelector(element).scrollIntoView({ behavior: "smooth", block: option, inline: "nearest" });
 }
 
 /* аккордеон-спойлер  /---/---/---/---/---/---/---/---/---/--- */
